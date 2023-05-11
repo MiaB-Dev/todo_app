@@ -11,6 +11,7 @@ import java.util.Date;
  * @author author
  */
 public class Project {
+
     private int id;
     private String name;
     private String description;
@@ -23,6 +24,10 @@ public class Project {
         this.description = description;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Project() {
+        this.createdAt = new Date();
     }
 
     public int getId() {
@@ -64,7 +69,5 @@ public class Project {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
-    
-    
+
 }
