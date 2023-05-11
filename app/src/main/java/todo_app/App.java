@@ -3,7 +3,13 @@
  */
 package todo_app;
 
+import controller.ProjectController;
+import controller.TaskController;
 import java.sql.Connection;
+import java.util.Date;
+import java.util.List;
+import model.Project;
+import model.Task;
 import util.ConnectionFactory;
 
 public class App {
@@ -15,5 +21,47 @@ public class App {
         System.out.println(new App().getGreeting());
         Connection c = ConnectionFactory.getConnection();
         ConnectionFactory.closeConnection(c);
+        
+        ProjectController projectController = new ProjectController();
+        
+        Project project = new Project();
+//        project.setName("Projeto teste 2");
+//        project.setDescription("uma desc 2");
+//        projectController.save(project);
+        
+//        project.setId(1);
+//        project.setName("Novo nome");
+//        project.setDescription("nova descri");
+//        projectController.update(project);
+
+        List <Project> projects = projectController.getAll();
+        System.out.println("total de projs = " + projects.size());
+        
+        //projectController.removeById(2);
+        
+        
+        TaskController taskController = new TaskController();
+        Task task = new Task();
+//        task.setIdProject(1);
+//        task.setName("Segunda");
+//        task.setDescription("Outra desc");
+//        task.setNotes("22222sem notas");
+//        task.setIsCompleted(Boolean.FALSE);
+//        task.setDeadline(new Date());
+//        
+//        taskController.save(task);
+
+//        task.setId(2);
+//        task.setIdProject(1);
+//        task.setName("FUNCIONA DESGRAÇA");
+//        task.setIsCompleted(Boolean.FALSE);
+//        task.setDeadline(new Date());
+//
+//        taskController.update(task);
+        
+        //taskController.removeById(2);
+        
+        List <Task> tasks = taskController.getAll(1);
+        System.out.println("total de tasks = " + tasks.size());
     }
 }
