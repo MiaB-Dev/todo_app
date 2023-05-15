@@ -155,6 +155,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
             project.setDescription(jTextAreaDescription.getText());
             controller.save(project);
             JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso");
+            
         }catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

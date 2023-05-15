@@ -4,8 +4,15 @@
  */
 package view;
 
+import controller.ProjectController;
+import controller.TaskController;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.Project;
 
 /**
  *
@@ -16,9 +23,19 @@ public class MainScreen extends javax.swing.JFrame {
     /**
      * Creates new form MainScreen
      */
+    
+    ProjectController projectController;
+    TaskController taskController;
+    
+    DefaultListModel projectModel;
+    
     public MainScreen() {
         initComponents();
         decorateTableTask();
+        
+        initDataController();
+        initComponentsModel();
+        
     }
 
     /**
@@ -296,6 +313,13 @@ public class MainScreen extends javax.swing.JFrame {
     private void jLabelProjectsAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProjectsAddMouseClicked
         ProjectDialogScreen projectDialogScreen = new ProjectDialogScreen(this, rootPaneCheckingEnabled);
         projectDialogScreen.setVisible(true);
+        
+        projectDialogScreen.addWindowListener(new WindowAdapter(){
+          
+            public void  windowClosed(WindowEvent e){
+                loadProjects();
+            }
+        });
     }//GEN-LAST:event_jLabelProjectsAddMouseClicked
 
     private void jLabelTasksAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelTasksAddMouseClicked
@@ -369,5 +393,30 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.getTableHeader().setForeground(new Color(255,255,255));
         
         jTableTasks.setAutoCreateRowSorter(true);
+    }
+    
+    public void initDataController(){
+        projectController = new ProjectController();
+        taskController = new TaskController();
+    }
+    
+    public void  initComponentsModel(){
+        
+        projectModel = new DefaultListModel() ;
+        loadProjects();
+    }
+    
+    public void loadProjects(){
+        List<Project> projects =  projectController.getAll();
+        
+        projectModel.clear();
+        
+        for (int i = 0; i < projects.size(); i++) {
+            
+            Project project = projects.get(i);
+            projectModel.addElement(project);
+        }
+        
+        jListProjects.setModel(projectModel);
     }
 }
