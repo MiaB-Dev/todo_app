@@ -15,12 +15,15 @@
 </ul>
 
 <h2>Tela de início sem tarefas</h2>
+
 ![](https://raw.githubusercontent.com/MiaB-Dev/todo_app/master/app/src/main/resources/tela_vazia.png)
 
 <h2>Tela de início com projetos e tarefas</h2>
+
 ![](https://raw.githubusercontent.com/MiaB-Dev/todo_app/master/app/src/main/resources/tela_inicial.png)
 
 <h2>Tela de adicionar projeto</h2>
+
 ![](https://raw.githubusercontent.com/MiaB-Dev/todo_app/master/app/src/main/resources/tela_projeto.png)
 
 <h2>Tela de adicionar tarefas</h2>
